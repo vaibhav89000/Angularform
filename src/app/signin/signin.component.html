@@ -1,0 +1,42 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+        <form style="margin-left: 28vw;" (ngSubmit)="onSubmit()" #f="ngForm">
+            <div class="form-group">
+              <label for="email">Email address</label>
+              <input 
+              type="email" 
+              class="form-control" 
+              id="email" 
+              aria-describedby="emailHelp" 
+              style="width: 15vw;"
+              ngModel
+              name="email"
+              required
+              email
+              #email="ngModel">
+              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+              <p *ngIf="!email.valid && email.touched" style="color: red;">Please enter the correct email id</p>
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input 
+              type="password" 
+              class="form-control" 
+              id="password" 
+              style="width: 15vw;"
+              ngModel
+              name="password"
+              required>
+            </div>
+            
+            <button 
+            type="submit" 
+            class="btn btn-primary"
+            [disabled]="!f.valid">Submit</button>
+          </form>
+    </div>
+</div>
+
+</div>

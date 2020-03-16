@@ -1,0 +1,111 @@
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <form style="margin-left: 28vw;" (ngSubmit)="onSubmit()" #f="ngForm" >
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input 
+                    type="text"
+                    class="form-control"
+                    id="firstName"
+                    style="width: 35vw;"
+                    ngModel
+                    name="firstName"
+                    required>
+                  </div>
+                  <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    id="lastName" 
+                    style="width: 35vw;"
+                    ngModel
+                    name="lastName"
+                    required>
+                  </div>
+                  <label for="">Gender</label>
+                  <div class="radio" *ngFor="let gender of genders">
+                      <label for="">
+                          <input 
+                          type="radio"
+                          name="gender"
+                          ngModel
+                          [value]="gender"
+                          required>
+                          {{gender}}
+                      </label>
+                  </div>
+                  <div class="form-group">
+                    <label for="collegeName">College Name</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    id="collegeName" 
+                    style="width: 35vw;"
+                    ngModel
+                    name="collegeName"
+                    required>
+                  </div>
+    
+    
+                <div class="form-group">
+                  <label for="email">Email address</label>
+                  <input 
+                  type="email" 
+                  class="form-control" 
+                  id="email" 
+                  aria-describedby="emailHelp" 
+                  style="width: 35vw;"
+                  ngModel
+                  name="email"
+                  required
+                  email
+                  #email="ngModel">
+                  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                  <span class="help-block" *ngIf="!email.valid && email.touched" style="color: red;">Please Enter the valid email id</span>
+                </div>
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <input 
+                  type="password" 
+                  class="form-control" 
+                  id="password" 
+                  style="width: 35vw;"
+                  ngModel
+                  name="password"
+                  required>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input 
+                    type="password" 
+                    class="form-control" 
+                    id="confirmPassword" 
+                    style="width: 35vw;"
+                    ngModel
+                    name="confirmPassword"
+                    required>
+                  </div>
+                <button 
+                type="submit" 
+                class="btn btn-primary"
+                [disabled]="!f.valid">Submit</button>
+              </form>
+        </div>
+    </div>
+    <hr>
+    <div class="row" *ngIf="submitted">
+        <div class="col-xs-12">
+            <h1>Your Submitted data</h1>
+            <p>firstName: {{user.firstname}}</p>
+            <p>lastName: {{user.lastname}}</p>
+            <p>gender: {{user.gender}}</p>
+            <p>collegeName: {{user.collegename}}</p>
+            <p>email: {{user.email}}</p>
+        </div>
+    </div>
+
+    <button class="btn btn-primary" (click)="onget()">check users</button>
+</div>
